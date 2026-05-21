@@ -1,0 +1,20 @@
+# ~/dotfiles/Brewfile
+
+# Core Modern Tooling
+brew "stow"
+brew "starship"
+brew "fastfetch"
+brew "eza"
+brew "bat"
+brew "zoxide"
+brew "ripgrep"
+brew "fd"
+brew "dust"
+brew "bottom"
+brew "lazygit"
+brew "yazi"
+brew "zellij"
+
+# Casks
+cask "ghostty"
+cask "karabiner-elements"
