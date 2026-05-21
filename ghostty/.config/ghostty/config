@@ -1,0 +1,5 @@
+theme = catppuccin-mocha
+font-family = "JetBrains Mono"
+font-size = 14
+window-padding-x = 10
+window-padding-y = 10
