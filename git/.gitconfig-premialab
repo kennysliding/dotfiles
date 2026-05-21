@@ -1,0 +1,7 @@
+[user]
+	name = Kenny Chiu\n
+	email = kenny.chiu@premialab.com
+	signingkey = ~/.ssh/kennychiu-plb.pub
+
+[core]
+	sshCommand = "ssh -i ~/.ssh/kennychiu-plb"

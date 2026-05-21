@@ -1,0 +1,7 @@
+[user]
+	name = kennysliding\n
+	email = kennychiu.v@gmail.com
+	signingkey = ~/.ssh/kennysliding.pub
+
+[core]
+	sshCommand = "ssh -i ~/.ssh/kennysliding"

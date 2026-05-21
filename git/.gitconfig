@@ -1,0 +1,59 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[branch]
+	autoSetupMerge = simple
+[push]
+	default = current
+[core]
+	excludesfile = /Users/kennychiu/.gitignore_global
+	ignorecase = false
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[user]
+	name = kenny
+	email = kenny.chiu@premialab.com
+[commit]
+	template = /Users/kennychiu/.stCommitMsg
+	gpgsign = true
+[includeIf "gitdir:~/Untitled/kennysliding/"]
+  path = ~/.gitconfig-kennysliding
+[includeIf "gitdir:~/Untitled/vootech/"]
+  path = ~/.gitconfig-vootech
+[includeIf "gitdir:~/Code/"]
+  path = ~/.gitconfig-premialab
+[gpg]
+	format = ssh
+[rerere]
+	enabled = 1
+[alias]
+	append = town append
+	compress = town compress
+	continue = town continue
+	contribute = town contribute
+	delete = town delete
+	diff-parent = town diff-parent
+	down = town down
+	hack = town hack
+	observe = town observe
+	park = town park
+	prepend = town prepend
+	propose = town propose
+	rename = town rename
+	repo = town repo
+	set-parent = town set-parent
+	ship = town ship
+	sync = town sync
+	up = town up
+[git-town]
+	sync-feature-strategy = rebase
+[credential "https://github.com"]
+	helper = 
+[credential "https://gist.github.com"]
+	helper = 
