@@ -112,7 +112,7 @@ autoload -Uz add-zsh-hook
 _set_gh_config() {
     if [[ "$PWD" == "$HOME/Code"* ]]; then
         export GH_CONFIG_DIR="$HOME/.config/gh-premialab"
-    elif [[ "$PWD" == "$HOME/Untitled/kennysliding"* ]]; then
+    elif [[ "$PWD" == "$HOME/Untitled/kennysliding"* || "$PWD" == "$HOME/.local/share/chezmoi"* ]]; then
         export GH_CONFIG_DIR="$HOME/.config/gh-kennysliding"
     else
         unset GH_CONFIG_DIR
