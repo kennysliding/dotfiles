@@ -198,7 +198,6 @@ _wrangler() {
 
                 # Return 0 to indicate completion is finished and prevent zsh from
                 # trying other completion algorithms (which could cause hanging).
-                # We use NoFileComp directive to explicitly disable file completion.
                 return 0
             else
                 # Perform file completion
@@ -216,4 +215,3 @@ _wrangler() {
 if [ "${funcstack[1]}" = "_wrangler" ]; then
     _wrangler
 fi
-

@@ -47,12 +47,31 @@ export PATH="$PATH:${HOME}/.local/bin"
 export ZDOTDIR="${HOME}"
 export AWS_SDK_LOAD_CONFIG=1
 
+export EDITOR="code --wait"
+export VISUAL="code --wait"
+
+# ===== SECRETS =====
+# Loads secrets from Bitwarden Secrets Manager via varlock into shell env vars.
+# One-time bootstrap per machine: run `varlock load --path ~/.config/varlock/`
+# varlock will prompt for BITWARDEN_ACCESS_TOKEN and encrypt it via Touch ID.
+if command -v varlock &>/dev/null; then
+  eval "$(varlock load --format shell --compact --path ~/.config/varlock/ 2>/dev/null)" || true
+fi
+
+# Bitwarden SSH agent socket (Bitwarden desktop → Settings → Enable SSH agent)
+# export SSH_AUTH_SOCK=~/"Library/Group Containers/LKR22L2ADD.group.com.bitwarden.desktop/socket"
+
 # ===== INTEGRATIONS =====
 [ -f "${HOME}/.fzf.zsh" ] && source "${HOME}/.fzf.zsh"
 export FZF_CTRL_R_OPTS="--reverse --header 'Press CTRL-Y to copy, CTRL-/ to toggle preview' --preview 'echo {}' --preview-window 'up:3:wrap,hidden' --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort' --bind 'ctrl-/:toggle-preview' --bind 'ctrl-r:toggle-sort' --color header:italic"
 
 eval "$(mise activate zsh --shims)"
 eval "$(zoxide init zsh)"
+
+# ===== BRACKETED PASTE =====
+# Prevent multi-line paste from auto-executing; all pasted lines wait for Enter
+autoload -Uz bracketed-paste-magic
+zle -N bracketed-paste bracketed-paste-magic
 
 # ===== KEYBINDINGS =====
 autoload -U up-line-or-beginning-search
@@ -74,7 +93,8 @@ setopt INTERACTIVE_COMMENTS
 
 # ===== ALIASES =====
 alias reload="source ~/.zshrc"
-alias zshrc="cursor ~/Untitled/kennysliding/dotfiles/zsh/.zshrc"
+alias zshrc='chezmoi edit --apply ~/.zshrc'
+alias dotfiles='chezmoi cd'
 alias cd="z"
 alias ls="eza --icons --group-directories-first"
 alias ll="eza -la --icons --group-directories-first"
@@ -111,8 +131,7 @@ esac
 # ===== STARSHIP PROMPT =====
 eval "$(starship init zsh)"
 
-# Transient Prompt
-# Transient prompt for starship in zsh
+# Transient Prompt — shrinks accepted prompts to just the chevron
 zle-line-init() {
   emulate -L zsh
 

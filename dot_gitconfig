@@ -17,15 +17,14 @@
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [user]
-	name = kenny
+	name = Kenny Chiu
 	email = kenny.chiu@premialab.com
 [commit]
-	template = /Users/kennychiu/.stCommitMsg
 	gpgsign = true
 [includeIf "gitdir:~/Untitled/kennysliding/"]
   path = ~/.gitconfig-kennysliding
-[includeIf "gitdir:~/Untitled/vootech/"]
-  path = ~/.gitconfig-vootech
+[includeIf "gitdir:~/.local/share/chezmoi/"]
+  path = ~/.gitconfig-kennysliding
 [includeIf "gitdir:~/Code/"]
   path = ~/.gitconfig-premialab
 [gpg]

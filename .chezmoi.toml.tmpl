@@ -1,0 +1,10 @@
+encryption = "age"
+
+[age]
+identity = "~/.config/chezmoi/key.txt"
+recipient = "age1l206nnz59p9acrtsuhtghd680jtr4hmmrz5phg2xvt8yqggyqccqfh0qat"
+
+[edit]
+command = "{{ if eq .chezmoi.os "darwin" }}code{{ else }}nano{{ end }}"
+# Dynamic logic: Use VS Code on macOS, but fallback to nano on Linux!
+args = ["--wait"]
