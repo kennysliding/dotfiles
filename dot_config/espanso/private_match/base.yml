@@ -1,0 +1,61 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # But matches can also be dynamic:
+
+  # Print the current date
+  - trigger: ":today"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%m/%d/%Y"
+
+  - trigger: ":now"
+    replace: "{{datetime}}"
+    vars:
+      - name: datetime
+        type: date
+        params:
+          format: "%m/%d/%Y %H:%M:%S"
+
+  # Print the current datetime in unix format
+  - trigger: ":unixtime"
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%s"
+
+  # Print the output of a shell command
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+
+  # git
+  - trigger: ":gpl"
+    replace: "git pull"
+
+  - trigger: ":gpu"
+    replace: "git push"
+
+  # poetry
+  - trigger: ":pcheck"
+    replace: "poetry run ruff check && poetry run pyright"
+
+  # And much more! For more information, visit the docs: https://espanso.org
